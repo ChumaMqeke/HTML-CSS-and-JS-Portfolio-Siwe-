@@ -3,17 +3,21 @@ const sectBtns = document.querySelectorAll('.controls');
 const sectBtn = document.querySelectorAll('.control');
 const allSelections = document.querySelector('.main-content');
 
+function PageTransitions() {
+    // This is for the clicked active class to hide the inactive
+    for (let i = 0; i < sectBtn.length; i++) {
+        sectBtn[i].addEventListener('click', function () {
+            let currentBtn = document.querySelector('.active-btn');
+            
+            // Remove the active-btn class from the current button
+            if (currentBtn) {
+                currentBtn.classList.remove('active-btn');
+            }
 
-function PageTransitions(){
-    //This is for the clicked active class to hide the inactive 
-    for(let i = 0; i < sectBtn.length; i++){
-        sectBtn[i].addEventListener('click', function(){
-           let currentBtn = document.querySelectorAll('.active-btn');
-           currentBtn[0].className = currentBtn[0].className.replace('.active-btn', ' ');
-           this.className += ' active-btn';
-       })
+            // Add the active-btn class to the clicked button
+            this.classList.add('active-btn');
+        });
     }
-
     //To show the active sections
     allSelections.addEventListener('click', (e) =>{
         const id = e.target.dataset.id;
